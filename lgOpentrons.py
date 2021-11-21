@@ -33,7 +33,6 @@ class Labguru(object):
             self.session.get('url') + 'api/v1/experiments/' + str(id) + '/elements.json?&element_type=plate',
             json={"token": self.session.get('token')}).json()
 
-
         plates = []
         for element in plates_elements:
             data = json.loads(element['data'])
@@ -58,7 +57,6 @@ class Labguru(object):
 
         return samples
 
-
     def get_forms_data(self, id):
         """
         @Description: return list of forms data from the experiment.
@@ -74,7 +72,6 @@ class Labguru(object):
             forms_data.append(json.loads(element['description'])['form_json'])
 
         return forms_data
-
 
     def add_step(self, id, txt):
         """
@@ -122,7 +119,7 @@ class Labguru(object):
 
         return response
 
-    def uploud_attachments(self, id, file):
+    def upload_attachments(self, id, file):
         """
         @Description: uploud_attachments to the experiment.
         @Param1: the experiment id
@@ -136,7 +133,7 @@ class Labguru(object):
             self.session.get('url') + 'api/v1/experiments/' + str(id),
             json={"token": self.session.get('token')}).json()
 
-        reponse = requests.post(
+        response = requests.post(
             self.session.get('url') + 'api/v1/attachments',
             data={
                 'item[title]': os.path.basename(file),
@@ -147,7 +144,7 @@ class Labguru(object):
             files={'item[attachment]': (file, attachment)},
         )
 
-        return reponse
+        return response
 
     def update_stock_amount_used(self, id, stocks_id, amount_used, unit_type, unit_type_name):
         """
@@ -159,7 +156,6 @@ class Labguru(object):
         @Param5: unit type name
         @Return api response
         """
-
         samples_elements = self.get_samples(id)
         for element in samples_elements:
             for sample in element:
