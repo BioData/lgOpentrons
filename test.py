@@ -2,7 +2,7 @@ import lgOpentrons
 
 id = 655  # new experiment
 file = r'xxxxxxxxxxxxxxxxxxxxxxxxx'
-# id = 651
+id = 651
 
 lab = lgOpentrons.Labguru(login="xxxxxxxxxxxx", password="xxxxxxxxxxxxxxxxxx")
 print(lab.get_plates(id))

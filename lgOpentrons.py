@@ -28,7 +28,6 @@ class Labguru(object):
         @Param: the experiment id
         @Return list of plates or empty list if plates not found
         """
-
         plates_elements = requests.get(
             self.session.get('url') + 'api/v1/experiments/' + str(id) + '/elements.json?&element_type=plate',
             json={"token": self.session.get('token')}).json()
